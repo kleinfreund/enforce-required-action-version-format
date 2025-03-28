@@ -1,0 +1,25 @@
+name: 'enforce-required-action-version-format'
+description: 'Enforces the required version format for GitHub Actions uses statements referencing third-party actions'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+inputs:
+  patterns:
+    description: 'Glob patterns for where to look for action files. By default, this action only considers files inside “.github/workflows” and “.github/actions” with the extensions “.yml” or “.yaml”. Must be a string separated by newlines (i.e. “\n”). Doesn’t follow symbolic links. Uses the `@actions/glob` package (see https://github.com/actions/toolkit/tree/main/packages/glob).'
+    default: |
+      .github/workflows/*.yml
+      .github/workflows/*.yaml
+      .github/actions/**/*.yml
+      .github/actions/**/*.yaml
+  required-version-format:
+    description: 'Required version format. One of “sha-1” or “sha-256”. Using “sha-1” implies that both “sha-1” and “sha-256” formats are allowed. Using “sha-256” implies that only the “sha-256” format is allowed.'
+    default: 'sha-1'
+  report-level:
+    description: 'Whether offending uses are reported as errors or warnings. One of “error” or “warning”.'
+    default: 'error'
+outputs:
+  result:
+    description: 'A list of action file paths and their offending uses statements.'
+branding:
+  icon: 'shield'
+  color: 'gray-dark'

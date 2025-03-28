@@ -1,0 +1,58 @@
+{
+	"name": "enforce-required-action-version-format",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"description": "Enforces the required version format for GitHub Actions uses statements referencing third-party actions",
+	"author": {
+		"name": "Philipp Rudloff",
+		"url": "https://kleinfreund.de"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kleinfreund/enforce-required-action-version-format.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kleinfreund/enforce-required-action-version-format/issues"
+	},
+	"keywords": [
+		"actions",
+		"node",
+		"sha"
+	],
+	"engines": {
+		"node": ">=20"
+	},
+	"type": "commonjs",
+	"scripts": {
+		"build": "node esbuild.mjs",
+		"test": "vitest run --coverage",
+		"test:watch": "vitest watch",
+		"lint": "run-p lint:*",
+		"lint:code": "eslint",
+		"lint:lockfile": "lockfile-lint --path package-lock.json --validate-hosts --allowed-hosts npm",
+		"fix": "run-p fix:*",
+		"fix:code": "npm run lint:code -- --fix",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@actions/core": "^1.11.1",
+		"@actions/glob": "^0.5.0",
+		"yaml": "^2.7.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
+		"@eslint/js": "^9.23.0",
+		"@stylistic/eslint-plugin": "^4.2.0",
+		"@vitest/coverage-v8": "^3.0.9",
+		"esbuild": "~0.25.1",
+		"eslint": "^9.23.0",
+		"globals": "^16.0.0",
+		"husky": "^9.1.7",
+		"lockfile-lint": "^4.14.0",
+		"npm-run-all2": "^7.0.2",
+		"standard": "^17.1.2",
+		"vitest": "^3.0.9"
+	}
+}
