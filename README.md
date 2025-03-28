@@ -55,7 +55,7 @@ Enforces the required version format for GitHub Actions uses statements referenc
 
 ## Workflow permissions
 
-This action doesn't require any permissions, but it does require the repository whose actions are to be checked to be checked out and so you'll need `contents: read` (e.g.  `actions/checkout).
+This action doesn't require any permissions, but it does require the repository whose actions are to be checked to be checked out and so you'll need `contents: read` (e.g.  `actions/checkout`).
 
 ## Inputs
 
